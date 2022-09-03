@@ -1,0 +1,33 @@
+class Solution {
+public:
+    int romanToInt(string s) {
+        
+        map<char, int> RomanMap;
+        RomanMap.insert(std::pair<char,int>('I',1));
+        RomanMap.insert(std::pair<char,int>('V',5));
+        RomanMap.insert(std::pair<char,int>('X',10));
+        RomanMap.insert(std::pair<char,int>('L',50));
+        RomanMap.insert(std::pair<char,int>('C',100));
+        RomanMap.insert(std::pair<char,int>('D',500));
+        RomanMap.insert(std::pair<char,int>('M',1000));
+        
+        
+        int sizeS =  s.length();
+        int result = RomanMap.find(s[0])->second;
+        
+        for(int i = 1; i < sizeS; i++)
+        {
+            int cur = RomanMap.find(s[i])->second;
+            int pre = RomanMap.find(s[i - 1])->second;
+            if (pre < cur )
+            {
+                result += cur - pre - pre;
+            }
+            else
+                result += cur;     
+        }
+        
+        return result;
+        
+    }
+};
