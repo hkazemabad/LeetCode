@@ -1,0 +1,31 @@
+class Solution {
+public:
+    vector<int> countBits(int n) {
+        
+        vector<int> result(++n); 
+        result.at(0) = 0;
+        
+        if (n > 1)
+        {
+            result.at(1) = 1;
+    
+            int i = 2;
+            while (i < n)
+            {
+
+                int countOne = 0, j = i;
+                while (j)
+                {
+                    countOne += j % 2;
+                    j /= 2;
+                }
+                
+                result.at(i) = countOne;
+                i++;
+            }
+        }
+         
+        return result;
+    }
+    
+};
