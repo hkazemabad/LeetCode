@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int numJewelsInStones(string jewels, string stones) {
+        
+        
+        int countJewels = 0;
+        
+        for (char& s : stones)
+        {
+            if(jewels.find(s) != std::string::npos)
+                countJewels++;
+        }
+            
+        return countJewels;
+        
+      
+        
+    }
+};
