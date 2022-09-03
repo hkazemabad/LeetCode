@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int mostWordsFound(vector<string>& sentences) {
+        
+        int maxLength = 0;
+        for (string& sentence :  sentences)
+        {
+            int countSpace = 0;
+            for (char& c :  sentence)
+            {
+                if (c == ' ')
+                    countSpace++;
+            }
+            if (maxLength < ++countSpace)
+                maxLength = countSpace;
+        }
+        return maxLength;
+    }
+};
