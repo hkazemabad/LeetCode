@@ -1,0 +1,46 @@
+class Solution {
+public:
+    int numIdenticalPairs(vector<int>& nums) {
+        
+       /* map<int, vector<int>> indexKeys;
+        int countPairs = 0;
+        
+        for (int i = 0; i < nums.size(); ++i)
+        {
+            if (indexKeys.find(nums[i]) != indexKeys.end())
+            {
+                indexKeys.find(nums[i])->second.push_back(i);   
+            }
+            else
+            {
+                indexKeys.insert(pair<int, vector<int>>(nums[i], vector<int>{i}));
+            }        
+        }
+        
+        for (auto [key, value] : indexKeys)
+        {
+            if (value.size() > 1)
+            {   
+                countPairs += (value.size() * (value.size() - 1) )/ 2;
+            }
+        }
+        
+        return countPairs;*/
+        
+        
+        
+    unordered_map<int,int> mp;
+    for(int i = 0; i < nums.size(); i++)
+    {
+        mp[nums[i]]++;
+    }
+    int ans = 0;
+    for(auto i : mp)
+    {
+        if(i.second > 1)
+            ans += (i.second) * (i.second-1) / 2;
+    }
+   return ans; 
+        
+    }
+};
