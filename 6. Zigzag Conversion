@@ -1,0 +1,47 @@
+class Solution {
+public:
+    string convert(string s, int numRows) {
+
+        int size = s.length(), row, step = numRows - 2, col = 1, i = 0, j;
+        row = step;
+        if( numRows == 1 || numRows > size || size <=1)
+            return s;
+        
+        string *results = new string[numRows], result = "";
+       
+        while(i < size)
+        {  
+            if (col == 1)
+            {
+                for (j = 0; j < numRows; j++)
+                {
+                    results[j].push_back(s[i++]);
+                    if(i == size)
+                        break;
+                }
+                row = step;
+            }
+            else {
+                for (j = 0; j < numRows; j++)
+                {
+                    if(j == row)
+                        results[j].push_back(s[i++]);
+                    if(i == size)
+                        break;
+                }
+                row--;
+                if(row < 0)
+                    row = step;
+            }
+            
+            col++;
+            
+            if (col == numRows)
+                col = 1;
+        }
+        i = 0;
+        while(i < numRows)
+            result += results[i++];
+        return result;
+    }
+};
